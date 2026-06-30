@@ -13,14 +13,14 @@ interface Founder {
 const founders: Record<string, Founder> = {
   darshil: {
     name: "Darshil Jadeja",
-    title: "Co-Founder & CTO",
+    title: "Co-Founder",
     bio: "With a vision to revolutionise healthcare through technology, Darshil leads our technical innovation. He has extensive experience building scalable AI systems and healthcare technology solutions that serve real clinical workflows.",
     expertise: ["AI / ML", "Cloud architecture", "Healthcare tech", "Product strategy"],
     initials: "DJ",
   },
   arin: {
     name: "Arin Danish",
-    title: "Co-Founder & CEO",
+    title: "Co-Founder",
     bio: "Arin brings strategic vision and deep industry knowledge to guide Swasthya Sathi's mission. With a background in healthcare operations and business development, he drives the company's growth and market expansion.",
     expertise: ["Healthcare operations", "Business strategy", "Market development", "Clinical insights"],
     initials: "AD",
@@ -35,7 +35,7 @@ export default function FoundersSection() {
     <section className="py-20 md:py-28" style={{ background: "#f5f9fd" }}>
       <div className="container">
         <div className="max-w-xl mb-12">
-          <h2 className="section-title">Meet our founders</h2>
+          <h2 className="section-title">Our co-founders</h2>
         </div>
 
         {/* Toggle pills */}

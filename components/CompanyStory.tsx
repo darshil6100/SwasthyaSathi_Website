@@ -38,15 +38,13 @@ export default function CompanyStory() {
                 Our journey
               </h3>
               <p className="leading-relaxed mb-4" style={{ color: "#5a7a96" }}>
-                Founded in 2024, Swasthya Sathi began with a simple
-                observation: healthcare providers spend more time on
+                Swasthya Sathi began with a simple observation: healthcare providers spend more time on
                 administrative work than on patient care. Our founders,
                 combining technology and healthcare-operations expertise, set
                 out to fix that with AI.
               </p>
               <p className="leading-relaxed" style={{ color: "#5a7a96" }}>
-                Today, we support clinics across India in delivering better
-                care while carrying less administrative weight.
+                We are building solutions to help clinics and hospitals deliver better care while carrying less administrative weight.
               </p>
             </div>
 

@@ -36,7 +36,7 @@ export default function Hero() {
           <div>
 
             <h1
-              className="font-display font-bold leading-[1.04] tracking-tight"
+              className="font-display font-bold leading-[1.04] tracking-tight overflow-visible"
               style={{
                 fontSize: "clamp(2.5rem, 5.5vw, 4rem)",
                 color: "#0e2540",
@@ -48,10 +48,7 @@ export default function Hero() {
               <span
                 className="italic"
                 style={{
-                  background: "linear-gradient(135deg, #1b4f9c 0%, #3eaee0 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  color: "#3eaee0",
                 }}
               >
                 every

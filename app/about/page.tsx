@@ -9,12 +9,12 @@ export default function AboutPage() {
         <div className="container">
           <div className="max-w-2xl">
             <h1 className="section-title">
-              We started where the paperwork was
+              Empowering healthcare providers to focus on what matters
             </h1>
             <p className="section-subtitle">
-              Swasthya Sathi exists because clinical teams were spending more
-              time on forms than on patients. Here&apos;s who we are and why we
-              build the way we do.
+              Administrative work shouldn't take time away from patient care. 
+              We're building AI-powered solutions to help clinics and hospitals 
+              reduce the burden of paperwork and streamline operations.
             </p>
           </div>
         </div>
