@@ -8,13 +8,12 @@ export default function AboutPage() {
       <section className="bg-[--sand] pt-16 pb-12 md:pt-24 md:pb-16">
         <div className="container">
           <div className="max-w-2xl">
-            <p className="eyebrow mb-4">About us</p>
             <h1 className="section-title">
               We started where the paperwork was
             </h1>
             <p className="section-subtitle">
               Swasthya Sathi exists because clinical teams were spending more
-              time on forms than on patients. Here's who we are and why we
+              time on forms than on patients. Here&apos;s who we are and why we
               build the way we do.
             </p>
           </div>

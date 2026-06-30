@@ -1,0 +1,31 @@
+Mysql 8.0.36
+
+DBName:swasthyasathi
+
+
+CREATE TABLE contact (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    company VARCHAR(150),
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE blog (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category VARCHAR(100) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  excerpt TEXT NOT NULL,
+  read_time VARCHAR(50) NOT NULL,
+  slug VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  is_active TINYINT(1) NOT NULL
+);
+
+INSERT INTO blog (category, title, excerpt, read_time, slug, is_active)
+VALUES
+('Clinic operations', 'How small clinics can reduce front-desk pressure', 'Practical ways to simplify check-in, queue updates, and follow-up without adding more staff.', '4 min read', 'reduce-front-desk-pressure',1);

@@ -1,80 +1,144 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* ─── Design tokens derived from SwasthyaSathi logo ─────────────────────── */
 :root {
-  /* Color tokens — warm clinical palette, not the default SaaS blue */
-  --ink: #14241f;       /* near-black teal — primary text, dark sections */
-  --teal: #0e6f64;      /* primary brand teal */
-  --teal-deep: #0a4f47; /* hover / dark backgrounds */
-  --sand: #f7f2e7;      /* warm paper background */
-  --coral: #e8623c;     /* vital accent — CTAs, the "pulse" */
-  --sage: #d8e6dc;      /* card surfaces, chips */
-  --ash: #5b6b66;       /* muted / secondary text */
-  --line: #c9d6cd;      /* hairline borders on sand */
+  /* Logo's sky-blue cross */
+  --sky: #3eaee0;
+  --sky-light: #7acfef;
+  --sky-deep: #1d8bbf;
+
+  /* Logo's navy stethoscope/S mark */
+  --navy: #1b4f9c;
+  --navy-dark: #0f3270;
+  --navy-light: #2d69c4;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --off-white: #f5f9fd;
+  --fog: #e8f3fa;
+  --mist: #c8dff0;
+  --slate: #5a7a96;
+  --ink: #0e2540;
+
+  /* Accent */
+  --coral: #e84d6e;
+  --coral-light: #ff8fa3;
+  --gold: #f59e0b;
+
+  /* Functional */
+  --line: #dcedf8;
+  --card-bg: #ffffff;
+  --page-bg: #f5f9fd;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(14, 37, 64, 0.08), 0 1px 2px rgba(14, 37, 64, 0.05);
+  --shadow-md: 0 4px 16px rgba(14, 37, 64, 0.1), 0 2px 6px rgba(14, 37, 64, 0.06);
+  --shadow-lg: 0 12px 40px rgba(14, 37, 64, 0.14), 0 4px 12px rgba(14, 37, 64, 0.08);
+  --shadow-sky: 0 8px 32px rgba(62, 174, 224, 0.25);
+  --shadow-navy: 0 8px 32px rgba(27, 79, 156, 0.2);
 }
+
+/* ─── Reset & base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--page-bg);
+  color: var(--ink);
+  line-height: 1.6;
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+.font-display { font-family: 'Sora', 'Inter', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
 
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-.container {
-  width: 100%;
-  max-width: 1180px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky-deep);
 }
 
 .section-title {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
-  line-height: 1.15;
-  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-@media (min-width: 768px) {
-  .section-title {
-    font-size: 2.75rem;
-  }
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
-  font-family: var(--font-body);
-  color: var(--ash);
   font-size: 1.05rem;
-  margin-top: 0.6rem;
-  max-width: 42rem;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-top: 1rem;
+  max-width: 52ch;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--coral);
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
 }
 
-/* Reduced-motion respect for any scroll/hover animation used across pages */
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(62, 174, 224, 0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(62, 174, 224, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(1deg); }
+  50%       { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes draw-pulse {
+  from { stroke-dashoffset: 600; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Utility classes ────────────────────────────────────────────────────── */
+.animate-fade-up   { animation: fadeUp 0.6s ease both; }
+.animate-fade-in   { animation: fadeIn 0.5s ease both; }
+.animate-float     { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    transition-duration: 0.001ms !important;
-  }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

@@ -1,22 +1,37 @@
 import Link from "next/link";
+import Image from "next/image";
 import PulseLine from "./PulseLine";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[--ink] text-[--sand]">
-      <div className="container py-16">
+    <footer style={{ background: "#0e2540", color: "#c8dff0" }}>
+      {/* Pulse divider top */}
+      <div className="opacity-10">
+        <PulseLine className="w-full h-10" color="#3eaee0" strokeWidth={1} />
+      </div>
+
+      <div className="container py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          {/* Company */}
+          {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[--coral] text-[--ink]">
-                <PulseLine className="h-3 w-6" strokeWidth={4} />
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl">
+                <Image
+                  src="/logo.png"
+                  alt="SwasthyaSathi"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                  priority
+                />
               </span>
-              <span className="font-display text-lg font-semibold">Swasthya Sathi</span>
+              <span className="font-display font-bold text-lg" style={{ color: "#ffffff" }}>
+                SwasthyaSathi</span>
+              
             </div>
-            <p className="text-sm text-[--sage]/70 leading-relaxed">
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(200,223,240,0.55)" }}>
               An AI care companion that runs alongside Indian clinics, nursing
               homes and hospitals.
             </p>
@@ -24,83 +39,81 @@ export default function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="eyebrow mb-4 text-[--coral]">Product</h4>
-            <ul className="space-y-3 text-sm text-[--sage]/80">
-              <li>
-                <Link href="/product" className="hover:text-white transition">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="/product" className="hover:text-white transition">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="/product" className="hover:text-white transition">
-                  Documentation
-                </Link>
-              </li>
+            <h4 className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: "#3eaee0" }}>
+              Product
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {["Features", "Documentation"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href="/product"
+                    className="transition-colors duration-200 hover:text-white"
+                    style={{ color: "rgba(200,223,240,0.6)" }}
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="eyebrow mb-4 text-[--coral]">Company</h4>
-            <ul className="space-y-3 text-sm text-[--sage]/80">
-              <li>
-                <Link href="/about" className="hover:text-white transition">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Blog
-                </a>
-              </li>
+            <h4 className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: "#3eaee0" }}>
+              Company
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {[
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+                { label: "Blog", href: "#" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="transition-colors duration-200 hover:text-white"
+                    style={{ color: "rgba(200,223,240,0.6)" }}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="eyebrow mb-4 text-[--coral]">Legal</h4>
-            <ul className="space-y-3 text-sm text-[--sage]/80">
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Privacy policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Terms of service
-                </a>
-              </li>
+            <h4 className="font-mono text-xs tracking-widest uppercase mb-4" style={{ color: "#3eaee0" }}>
+              Legal
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {["Privacy policy", "Terms of service"].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="transition-colors duration-200 hover:text-white"
+                    style={{ color: "rgba(200,223,240,0.6)" }}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-[--sage]/60">
-              © {currentYear} Swasthya Sathi. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-[--sage]/70 hover:text-white transition text-sm">
-                LinkedIn
-              </a>
-              <a href="#" className="text-[--sage]/70 hover:text-white transition text-sm">
-                Twitter
-              </a>
-              <a href="#" className="text-[--sage]/70 hover:text-white transition text-sm">
-                Instagram
-              </a>
-            </div>
+        {/* Bottom bar */}
+        <div
+          className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t"
+          style={{ borderColor: "rgba(255,255,255,0.07)" }}
+        >
+          <p className="text-sm" style={{ color: "rgba(200,223,240,0.4)" }}>
+            © {year} Swasthya Sathi. All rights reserved.
+          </p>
+          <div
+            className="flex items-center gap-2 text-xs font-mono"
+            style={{ color: "rgba(200,223,240,0.35)" }}
+          >
           </div>
         </div>
       </div>

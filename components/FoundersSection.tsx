@@ -7,89 +7,131 @@ interface Founder {
   title: string;
   bio: string;
   expertise: string[];
+  initials: string;
 }
 
-const founders: { [key: string]: Founder } = {
+const founders: Record<string, Founder> = {
   darshil: {
     name: "Darshil Jadeja",
     title: "Co-Founder & CTO",
-    bio: "With a vision to revolutionise healthcare through technology, Darshil leads our technical innovation. He has extensive experience building scalable AI systems and healthcare technology solutions.",
-    expertise: ["AI/ML", "Cloud architecture", "Healthcare tech", "Product strategy"],
+    bio: "With a vision to revolutionise healthcare through technology, Darshil leads our technical innovation. He has extensive experience building scalable AI systems and healthcare technology solutions that serve real clinical workflows.",
+    expertise: ["AI / ML", "Cloud architecture", "Healthcare tech", "Product strategy"],
+    initials: "DJ",
   },
   arin: {
     name: "Arin Danish",
     title: "Co-Founder & CEO",
     bio: "Arin brings strategic vision and deep industry knowledge to guide Swasthya Sathi's mission. With a background in healthcare operations and business development, he drives the company's growth and market expansion.",
     expertise: ["Healthcare operations", "Business strategy", "Market development", "Clinical insights"],
+    initials: "AD",
   },
 };
 
 export default function FoundersSection() {
-  const [selectedFounder, setSelectedFounder] = useState<"darshil" | "arin">(
-    "darshil"
-  );
-
-  const founder = founders[selectedFounder];
+  const [selected, setSelected] = useState<"darshil" | "arin">("darshil");
+  const founder = founders[selected];
 
   return (
-    <section className="py-20 md:py-28 bg-[--sand]">
+    <section className="py-20 md:py-28" style={{ background: "#f5f9fd" }}>
       <div className="container">
         <div className="max-w-xl mb-12">
-          <p className="eyebrow mb-4">The people behind it</p>
           <h2 className="section-title">Meet our founders</h2>
         </div>
 
-        {/* Founder Selection */}
-        <div className="inline-flex bg-white border border-[--line] rounded-full p-1 mb-12">
+        {/* Toggle pills */}
+        <div
+          className="inline-flex p-1 rounded-full mb-10"
+          style={{ background: "#e8f0fa", border: "1px solid #dcedf8" }}
+        >
           {(["darshil", "arin"] as const).map((key) => (
             <button
               key={key}
-              onClick={() => setSelectedFounder(key)}
-              className={`py-2.5 px-6 rounded-full font-semibold text-sm transition-colors ${
-                selectedFounder === key
-                  ? "bg-[--ink] text-[--sand]"
-                  : "text-[--ash] hover:text-[--ink]"
-              }`}
+              onClick={() => setSelected(key)}
+              className="relative py-2.5 px-6 rounded-full font-semibold text-sm transition-all duration-250"
+              style={{
+                background: selected === key ? "#1b4f9c" : "transparent",
+                color: selected === key ? "#ffffff" : "#5a7a96",
+                boxShadow: selected === key ? "0 4px 12px rgba(27,79,156,0.3)" : "none",
+              }}
             >
-              {founders[key].name}
+              {founders[key].name.split(" ")[0]}
             </button>
           ))}
         </div>
 
-        {/* Founder Details */}
+        {/* Card */}
         <div className="max-w-3xl">
-          <div className="bg-white rounded-3xl border border-[--line] p-8 md:p-10">
+          <div
+            key={selected}
+            className="rounded-3xl p-8 md:p-10 border"
+            style={{
+              background: "#ffffff",
+              borderColor: "#dcedf8",
+              boxShadow: "0 4px 24px rgba(27,79,156,0.07)",
+              animation: "fadeIn 0.3s ease both",
+            }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
-              {/* Image Section */}
+              {/* Avatar */}
               <div className="flex justify-center md:justify-start">
-                <div className="w-40 h-40 bg-[--sage] rounded-2xl flex items-center justify-center">
-                  <p className="text-[--ash] text-sm text-center px-4">
-                    Founder photo
-                  </p>
+                <div
+                  className="w-40 h-40 rounded-2xl flex items-center justify-center relative overflow-hidden"
+                  style={{
+                    background: "linear-gradient(135deg, #1b4f9c 0%, #3eaee0 100%)",
+                  }}
+                >
+                  <span className="font-display font-bold text-5xl text-white opacity-90">
+                    {founder.initials}
+                  </span>
+                  {/* Decorative cross pattern from logo */}
+                  <div
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
                 </div>
               </div>
 
-              {/* Content Section */}
+              {/* Info */}
               <div className="md:col-span-2">
-                <h3 className="font-display text-2xl md:text-3xl font-semibold mb-1 text-[--ink]">
+                <h3
+                  className="font-display font-bold text-2xl md:text-3xl mb-1"
+                  style={{ color: "#0e2540", letterSpacing: "-0.02em" }}
+                >
                   {founder.name}
                 </h3>
-                <p className="text-[--coral] font-semibold mb-4 text-sm tracking-wide">
+                <p
+                  className="font-semibold text-sm mb-4 font-mono tracking-wide"
+                  style={{ color: "#3eaee0" }}
+                >
                   {founder.title}
                 </p>
 
-                <p className="text-[--ash] mb-6 leading-relaxed">{founder.bio}</p>
+                <p className="leading-relaxed mb-6" style={{ color: "#5a7a96" }}>
+                  {founder.bio}
+                </p>
 
-                {/* Expertise */}
+                {/* Expertise tags */}
                 <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-[--ash] mb-3">
+                  <h4
+                    className="font-mono text-xs uppercase tracking-wider mb-3"
+                    style={{ color: "#5a7a96" }}
+                  >
                     Areas of expertise
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {founder.expertise.map((skill, index) => (
+                    {founder.expertise.map((skill) => (
                       <span
-                        key={index}
-                        className="bg-[--sage] text-[--teal-deep] text-sm font-medium px-3 py-1 rounded-full"
+                        key={skill}
+                        className="text-sm font-medium px-3.5 py-1.5 rounded-full"
+                        style={{
+                          background: "rgba(62, 174, 224, 0.1)",
+                          color: "#1b4f9c",
+                          border: "1px solid rgba(62, 174, 224, 0.2)",
+                        }}
                       >
                         {skill}
                       </span>
@@ -97,17 +139,25 @@ export default function FoundersSection() {
                   </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="mt-6 pt-6 border-t border-[--line] flex gap-5">
-                  <a href="#" className="text-[--ink] hover:text-[--teal] font-semibold text-sm">
-                    LinkedIn
-                  </a>
-                  <a href="#" className="text-[--ink] hover:text-[--teal] font-semibold text-sm">
-                    Twitter
-                  </a>
+                {/* Links */}
+                <div
+                  className="mt-6 pt-6 flex gap-5 border-t"
+                  style={{ borderColor: "#dcedf8" }}
+                >
+                  {["LinkedIn", "Twitter"].map((platform) => (
+                    <a
+                      key={platform}
+                      href="#"
+                      className="font-semibold text-sm transition-colors duration-200 hover:text-[#3eaee0]"
+                      style={{ color: "#1b4f9c" }}
+                    >
+                      {platform}
+                    </a>
+                  ))}
                   <a
-                    href="mailto:contact@swasthyasathi.com"
-                    className="text-[--ash] hover:text-[--ink] font-semibold text-sm"
+                    href="mailto:contact@swasthyasathi.in"
+                    className="font-semibold text-sm transition-colors duration-200 hover:text-[#0e2540]"
+                    style={{ color: "#5a7a96" }}
                   >
                     Email
                   </a>
