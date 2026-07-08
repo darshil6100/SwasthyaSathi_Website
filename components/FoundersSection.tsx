@@ -35,7 +35,7 @@ export default function FoundersSection() {
     <section className="py-20 md:py-28" style={{ background: "#f5f9fd" }}>
       <div className="container">
         <div className="max-w-xl mb-12">
-          <h2 className="section-title">Meet our founders</h2>
+          <h2 className="section-title">Our co-founders</h2>
         </div>
 
         {/* Toggle pills */}

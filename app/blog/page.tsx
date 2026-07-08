@@ -66,7 +66,7 @@ color: "#0e2540",
 Notes from the SwasthyaSathi team </h1>
 <p className="max-w-xl leading-relaxed" style={{ color: "#5a7a96" }}>
 Thoughts on clinical AI, product decisions, and what actually
-changes when technology fits into a real clinic's day. </p> </div> </section>
+changes when technology fits into a real clinic&apos;s day. </p> </div> </section>
 
 ```
   {posts.length === 0 && (

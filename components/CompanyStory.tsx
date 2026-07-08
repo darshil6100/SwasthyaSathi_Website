@@ -45,8 +45,7 @@ export default function CompanyStory() {
                 out to fix that with AI.
               </p>
               <p className="leading-relaxed" style={{ color: "#5a7a96" }}>
-                Today, we support clinics across India in delivering better
-                care while carrying less administrative weight.
+                We are building solutions to help clinics and hospitals deliver better care while carrying less administrative weight.
               </p>
             </div>
 

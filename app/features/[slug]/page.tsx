@@ -169,7 +169,7 @@ export default async function FeaturePage({ params }: PageProps) {
                 className="font-display font-bold text-2xl mb-4"
                 style={{ color: "#0e2540" }}
               >
-                Why it's needed
+                Why it&apos;s needed
               </h2>
               <p className="leading-relaxed" style={{ color: "#5a7a96" }}>
                 {feature.whyItMatters}
@@ -191,7 +191,7 @@ export default async function FeaturePage({ params }: PageProps) {
             </p>
             <h2 className="section-title">What it actually solves</h2>
             <p className="section-subtitle">
-              The everyday friction this feature is built to remove from a clinic's day.
+              The everyday friction this feature is built to remove from a clinic&apos;s day.
             </p>
           </div>
 
@@ -311,7 +311,7 @@ export default async function FeaturePage({ params }: PageProps) {
               See {feature.title.toLowerCase()} on a real patient day.
             </h2>
             <p className="text-base mb-8 max-w-md mx-auto leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-              A short walkthrough using your own clinic's flow, no slides, no sales script.
+              A short walkthrough using your own clinic&apos;s flow, no slides, no sales script.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

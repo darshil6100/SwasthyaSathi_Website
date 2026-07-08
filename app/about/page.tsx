@@ -12,7 +12,7 @@ export default function AboutPage() {
               Empowering healthcare providers to focus on what matters
             </h1>
             <p className="section-subtitle">
-              Administrative work shouldn't take time away from patient care. We're building AI-powered solutions to help clinics and hospitals reduce the burden of paperwork and streamline operations.
+              Administrative work shouldn&apos;t take time away from patient care. We&apos;re building AI-powered solutions to help clinics and hospitals reduce the burden of paperwork and streamline operations.
             </p>
           </div>
         </div>
